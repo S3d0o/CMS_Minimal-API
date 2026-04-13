@@ -264,7 +264,7 @@ POST /courses
 
 ---
 
-## 🧠 Interview Summary
+## Summary
 
 > I built a Course Management System using ASP.NET Core Minimal APIs with a layered architecture. I implemented structured logging with Serilog, validation using FluentValidation with a custom filter, and centralized error handling using a Result pattern and middleware. I chose to use EF Core directly instead of adding a repository layer to keep the architecture simple and aligned with modern practices.
 

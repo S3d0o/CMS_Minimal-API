@@ -240,18 +240,6 @@ POST /courses
   "courseType": "Online"
 }
 
-
----
-
-## 📈 Future Improvements
-
-* 🔐 JWT Authentication & Authorization
-* 📄 Pagination & Filtering
-* ⚡ Caching (Redis / Memory Cache)
-* 🐳 Dockerization
-* ☁️ Cloud Deployment (Azure / Linux)
-* 📊 API Versioning
-
 ---
 
 ## 💼 What This Project Demonstrates

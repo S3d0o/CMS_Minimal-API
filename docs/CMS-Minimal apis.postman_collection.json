@@ -1,0 +1,1766 @@
+{
+  "info": {
+    "_postman_id": "d43671cc-3239-4248-b097-5751f6fb4e52",
+    "name": "CMS-Minimal apis",
+    "description": "This collection contains the core endpoints for a minimal CMS-style API focused on managing courses, students, and enrollments.\n\nIt is organized into three main sections:\n\n- Course Endpoints: create, retrieve, update, and delete course records\n    \n- Student Endpoints: manage student-related operations\n    \n- Enrollment Endpoints: handle student course enrollment workflows, including enrolling, completing, dropping, and retrieving related course or student data\n    \n\nThe requests in this collection use the `{{baseminimal}}` variable as the base URL, making it easier to run the same endpoints across different environments.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48420922",
+    "_collection_link": "https://go.postman.co/collection/48420922-d43671cc-3239-4248-b097-5751f6fb4e52?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "CMS API",
+      "item": [
+        {
+          "name": "Student Endpoints",
+          "item": [
+            {
+              "name": "GetAllStudents",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test disc\",\r\n  \"courseType\": 4,\r\n  \"price\": 40\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseminimal}}/student",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "student"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test disc\",\r\n  \"courseType\": 4,\r\n  \"price\": 40\r\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/students",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 17:51:35 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"user\",\n        \"email\": \"user@example.com\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"saad\",\n        \"email\": \"saad@example.com\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"mohamed\",\n        \"email\": \"mohamed@example.com\"\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "CreateStudent",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"string\",\r\n  \"email\": \"user@example.com\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseminimal}}/students",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "students"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"user\",\r\n  \"email\": \"user@example.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/students",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 201
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 17:49:17 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "location",
+                      "value": "https://localhost:7175/students/1"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 1,\n    \"name\": \"user\",\n    \"email\": \"user@example.com\"\n}"
+                },
+                {
+                  "name": "validation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"\",\r\n  \"email\": \"user@example.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/students",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 400
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 17:49:45 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Name\": [\n            \"'Name' must not be empty.\"\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "UpdateStudent",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"userEdited\",\r\n  \"email\": \"user@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseminimal}}/students/5",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "students",
+                    "5"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"userEdited\",\r\n  \"email\": \"user@example.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/students/1",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 17:54:37 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 1,\n    \"name\": \"userEdited\",\n    \"email\": \"user@example.com\"\n}"
+                },
+                {
+                  "name": "StudentNotFound",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"userEdited\",\r\n  \"email\": \"user@example.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/students/5",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students",
+                        "5"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 404
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 17:56:47 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"NotFound\",\n    \"title\": \"Student with ID 5 not found.\",\n    \"status\": 404,\n    \"detail\": \"Requested resource was not found\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "GetStudentById",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/students/1",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "students",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/students/1",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 18:01:26 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 1,\n    \"name\": \"userEdited\",\n    \"email\": \"user@example.com\"\n}"
+                },
+                {
+                  "name": "student not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/students/7",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students",
+                        "7"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 404
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 18:37:10 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"NotFound\",\n    \"title\": \"Student with ID 7 not found.\",\n    \"status\": 404,\n    \"detail\": \"Requested resource was not found\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "DeleteStudent",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/students/1",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "students",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/students/1",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "students",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 204
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 18:36:34 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Enrollment Endpoints",
+          "item": [
+            {
+              "name": "EnrollStudent",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/enrollments?StudentId=3&CourseId=2",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "enrollments"
+                  ],
+                  "query": [
+                    {
+                      "key": "StudentId",
+                      "value": "3"
+                    },
+                    {
+                      "key": "CourseId",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments?StudentId=3&CourseId=2",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments"
+                      ],
+                      "query": [
+                        {
+                          "key": "StudentId",
+                          "value": "3"
+                        },
+                        {
+                          "key": "CourseId",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 204
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 18:55:08 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                },
+                {
+                  "name": "validation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments?StudentId=2&CourseId=2",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments"
+                      ],
+                      "query": [
+                        {
+                          "key": "StudentId",
+                          "value": "2"
+                        },
+                        {
+                          "key": "CourseId",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 400
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:14:33 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Student with ID 2 is already enrolled in course with ID 2.\": [\n            \"Validation error occurred\"\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "CompleteEnrollment",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/enrollments/3/2/complete",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    "3",
+                    "2",
+                    "complete"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/3/2/complete",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "3",
+                        "2",
+                        "complete"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 204
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 18:57:39 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                }
+              ]
+            },
+            {
+              "name": "DropEnrollment",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/enrollments/2/2/drop",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    "2",
+                    "2",
+                    "drop"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "must be active enrollment",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/3/2/drop",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "3",
+                        "2",
+                        "drop"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 400
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:02:19 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Only active enrollments can be dropped.\": [\n            \"Validation error occurred\"\n        ]\n    }\n}"
+                },
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/2/2/drop",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "2",
+                        "2",
+                        "drop"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 204
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:04:38 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                }
+              ]
+            },
+            {
+              "name": "CancelEnrollment",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is successful for enrollment action\", function () {",
+                      "    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment action response is JSON when body is present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        pm.response.to.have.header(\"Content-Type\");",
+                      "        pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"application/json\");",
+                      "        pm.expect(() => pm.response.json()).to.not.throw();",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(\"Cancel action returns a meaningful payload when present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        const data = pm.response.json();",
+                      "        pm.expect(data).to.not.equal(null);",
+                      "        pm.expect([\"object\", \"string\", \"number\", \"boolean\"]).to.include(typeof data);",
+                      "    }",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/enrollments/4/7/cancel",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    "4",
+                    "7",
+                    "cancel"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "no active enrollment",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/2/2/cancel",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "2",
+                        "2",
+                        "cancel"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 404
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:08:13 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"NotFound\",\n    \"title\": \"No active enrollment found for student with ID 2 in course with ID 2.\",\n    \"status\": 404,\n    \"detail\": \"Requested resource was not found\"\n}"
+                },
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/3/1/cancel",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "3",
+                        "1",
+                        "cancel"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 204
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:09:55 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                }
+              ]
+            },
+            {
+              "name": "GetCoursesByStudentId",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Response is valid JSON when body is present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        pm.response.to.have.header(\"Content-Type\");",
+                      "        pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"application/json\");",
+                      "        pm.expect(() => pm.response.json()).to.not.throw();",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment lookup returns an array or array-like payload\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (!text || !text.trim()) {",
+                      "        pm.expect.fail(\"Expected a non-empty response body for lookup endpoint\");",
+                      "    }",
+                      "    const data = pm.response.json();",
+                      "    const isArrayPayload = Array.isArray(data);",
+                      "    const isArrayLikeObject = data && typeof data === \"object\" && [\"items\", \"data\", \"results\", \"courses\", \"students\"].some(function (key) {",
+                      "        return Array.isArray(data[key]);",
+                      "    });",
+                      "    pm.expect(isArrayPayload || isArrayLikeObject).to.equal(true);",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/enrollments/students/4/courses",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    "students",
+                    "4",
+                    "courses"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/students/4/courses",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "students",
+                        "4",
+                        "courses"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:25:11 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n    {\n        \"id\": 5,\n        \"title\": \"test\",\n        \"description\": \"test disc\",\n        \"price\": 40,\n        \"createdAt\": \"2026-04-10T23:40:23.66\",\n        \"courseType\": \"COMPUTER_SCIENCE\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"s\",\n        \"description\": \"s disc\",\n        \"price\": 90,\n        \"createdAt\": \"2026-04-13T19:12:19.27\",\n        \"courseType\": \"COMPUTER_SCIENCE\"\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "GetStudentsByCourseId",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Response is valid JSON when body is present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        pm.response.to.have.header(\"Content-Type\");",
+                      "        pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"application/json\");",
+                      "        pm.expect(() => pm.response.json()).to.not.throw();",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment lookup returns an array or array-like payload\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (!text || !text.trim()) {",
+                      "        pm.expect.fail(\"Expected a non-empty response body for lookup endpoint\");",
+                      "    }",
+                      "    const data = pm.response.json();",
+                      "    const isArrayPayload = Array.isArray(data);",
+                      "    const isArrayLikeObject = data && typeof data === \"object\" && [\"items\", \"data\", \"results\", \"courses\", \"students\"].some(function (key) {",
+                      "        return Array.isArray(data[key]);",
+                      "    });",
+                      "    pm.expect(isArrayPayload || isArrayLikeObject).to.equal(true);",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/enrollments/courses/7/students",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    "courses",
+                    "7",
+                    "students"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/enrollments/courses/7/students",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        "courses",
+                        "7",
+                        "students"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:28:50 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n    {\n        \"id\": 2,\n        \"name\": \"saad\",\n        \"email\": \"saad@example.com\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"mohamed\",\n        \"email\": \"mohamed@example.com\"\n    }\n]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Course Endpoints",
+          "item": [
+            {
+              "name": "GetAllCourses",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/Courses",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "Courses"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/courses",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:44:26 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"updated eng\",\n        \"description\": \"desc\",\n        \"price\": 60,\n        \"createdAt\": \"2026-04-10T19:39:01.41\",\n        \"courseType\": \"ENGINEERING\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"medical title\",\n        \"description\": \"medica disc\",\n        \"price\": 40,\n        \"createdAt\": \"2026-04-10T19:42:32.6633333\",\n        \"courseType\": \"MEDICAL\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"test\",\n        \"description\": \"test disc\",\n        \"price\": 40,\n        \"createdAt\": \"2026-04-10T23:40:23.66\",\n        \"courseType\": \"COMPUTER_SCIENCE\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"s\",\n        \"description\": \"s disc\",\n        \"price\": 90,\n        \"createdAt\": \"2026-04-13T19:12:19.27\",\n        \"courseType\": \"COMPUTER_SCIENCE\"\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "CreateCourse",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is successful for create\", function () {",
+                      "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Create response is JSON when body is present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        pm.response.to.have.header(\"Content-Type\");",
+                      "        pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"application/json\");",
+                      "        pm.expect(() => pm.response.json()).to.not.throw();",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(\"Created course response is a non-empty object or payload\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        const data = pm.response.json();",
+                      "        const validPayload = (data !== null && typeof data === \"object\") || Array.isArray(data);",
+                      "        pm.expect(validPayload).to.equal(true);",
+                      "    } else {",
+                      "        pm.expect(pm.response.code).to.be.oneOf([201, 202, 204]);",
+                      "    }",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"eng01\",\r\n  \"description\": \"first eng course\",\r\n  \"courseType\": 1,\r\n  \"price\": 90\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseminimal}}/Courses",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "Courses"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"eng01\",\r\n  \"description\": \"first eng course\",\r\n  \"courseType\": 1,\r\n  \"price\": 90\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/Courses",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "Courses"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 201
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:45:27 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "location",
+                      "value": "https://localhost:7175/courses/8"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 8,\n    \"title\": \"eng01\",\n    \"description\": \"first eng course\",\n    \"price\": 90,\n    \"createdAt\": \"2026-04-13T19:45:28.7466667\",\n    \"courseType\": \"ENGINEERING\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "GetCourseById",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Response is valid JSON when body is present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        pm.response.to.have.header(\"Content-Type\");",
+                      "        pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"application/json\");",
+                      "        pm.expect(() => pm.response.json()).to.not.throw();",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(\"Course detail returns a non-null object or payload\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (!text || !text.trim()) {",
+                      "        pm.expect.fail(\"Expected response body for detail endpoint\");",
+                      "    }",
+                      "    const data = pm.response.json();",
+                      "    const validPayload = data !== null && (typeof data === \"object\" || Array.isArray(data));",
+                      "    pm.expect(validPayload).to.equal(true);",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/courses/1",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "courses",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/8",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "8"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:46:12 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 8,\n    \"title\": \"eng01\",\n    \"description\": \"first eng course\",\n    \"price\": 90,\n    \"createdAt\": \"2026-04-13T19:45:28.7466667\",\n    \"courseType\": \"ENGINEERING\"\n}"
+                },
+                {
+                  "name": "not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/90",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "90"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 404
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:46:31 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"NotFound\",\n    \"title\": \"Course with id 90 not found.\",\n    \"status\": 404,\n    \"detail\": \"Requested resource was not found\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "UpdateCourse",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is successful for update\", function () {",
+                      "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Update response is JSON when body is present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        pm.response.to.have.header(\"Content-Type\");",
+                      "        pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"application/json\");",
+                      "        pm.expect(() => pm.response.json()).to.not.throw();",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(\"Updated course response returns a meaningful payload when present\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (text && text.trim().length > 0) {",
+                      "        const data = pm.response.json();",
+                      "        pm.expect(data).to.not.equal(null);",
+                      "        pm.expect([\"object\", \"string\", \"number\", \"boolean\"]).to.include(typeof data);",
+                      "    }",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"updated eng\",\r\n  \"description\": \"desc\",\r\n  \"price\": 60\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseminimal}}/courses/1",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "courses",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"cs\",\r\n  \"description\": \"cs desc\",\r\n  \"price\": 70\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/7",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "7"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 200
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:47:28 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 7,\n    \"title\": \"cs\",\n    \"description\": \"cs desc\",\n    \"price\": 70,\n    \"createdAt\": \"2026-04-13T19:12:19.27\",\n    \"courseType\": \"COMPUTER_SCIENCE\"\n}"
+                },
+                {
+                  "name": "not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"cs\",\r\n  \"description\": \"cs desc\",\r\n  \"price\": 70\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/90",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "90"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 404
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:47:49 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"NotFound\",\n    \"title\": \"Course with id 90 not found.\",\n    \"status\": 404,\n    \"detail\": \"Requested resource was not found\"\n}"
+                },
+                {
+                  "name": "validation",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"cs desc\",\r\n  \"price\": -1\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/7",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "7"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 400
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:50:43 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Title\": [\n            \"Course title is required.\"\n        ],\n        \"Price\": [\n            \"Price must be greater than zero.\"\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "DeleteCourse",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is valid for delete\", function () {",
+                      "    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+                      "});",
+                      "",
+                      "pm.test(\"Response time is under 5000ms\", function () {",
+                      "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+                      "});",
+                      "",
+                      "pm.test(\"Delete response body is safely handled\", function () {",
+                      "    const text = pm.response.text();",
+                      "    if (pm.response.code !== 204 && text && text.trim().length > 0) {",
+                      "        const contentType = (pm.response.headers.get(\"Content-Type\") || \"\").toLowerCase();",
+                      "        if (contentType.includes(\"application/json\")) {",
+                      "            pm.expect(() => pm.response.json()).to.not.throw();",
+                      "        }",
+                      "    }",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseminimal}}/courses/4",
+                  "host": [
+                    "{{baseminimal}}"
+                  ],
+                  "path": [
+                    "courses",
+                    "4"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "succeed",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/2",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "2"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 204
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:51:05 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": null
+                },
+                {
+                  "name": "not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseminimal}}/courses/90",
+                      "host": [
+                        "{{baseminimal}}"
+                      ],
+                      "path": [
+                        "courses",
+                        "90"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": ":status",
+                      "value": 404
+                    },
+                    {
+                      "key": "content-type",
+                      "value": "application/problem+json"
+                    },
+                    {
+                      "key": "date",
+                      "value": "Mon, 13 Apr 2026 19:51:23 GMT"
+                    },
+                    {
+                      "key": "server",
+                      "value": "Kestrel"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"type\": \"NotFound\",\n    \"title\": \"Course with id 90 not found.\",\n    \"status\": 404,\n    \"detail\": \"Requested resource was not found\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

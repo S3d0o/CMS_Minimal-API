@@ -29,6 +29,17 @@ The system is designed with scalability and maintainability in mind, using a lay
 - FluentValidation
 
 ---
+## 📄 API Documentation
+
+You can explore the API using:
+
+- 🔗 Postman Documentation (interactive):
+  https://documenter.getpostman.com/view/48420922/2sBXqCNNyQ
+
+- 📁 Local Postman Collection:
+  Available inside the `/docs` folder
+
+The Swagger UI is also configured and available when running the project.
 
 ## 🏗️ Architecture
 
